@@ -32,7 +32,8 @@ const App = () => {
           'Content-Type': 'application/json'
         }
       };
-      const response = await fetch('http://localhost:9000/gemini', options);
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/gemini`, options);
+
       if (!response.ok) {
         throw new Error(`Server error: ${response.statusText}`);
       }
