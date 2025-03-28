@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Initialize Google Generative AI with API key
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'Ai-Chat-bot/build')));
 
 
 
@@ -41,7 +41,7 @@ app.post("/gemini", async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'Ai-Chat-bot/build', 'index.html'));
 });
 
 // Start the server
