@@ -1,5 +1,5 @@
-const PORT = process.env.PORT ?? 9000
-
+const path = require('path');  // Add this at the top
+const PORT = process.env.PORT ?? 9000;
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -19,9 +19,7 @@ app.use(express.json());
 
 // Initialize Google Generative AI with API key
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
-app.get('/', (req, res) => {
-  res.send('Server is running!');
-});
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.post("/gemini", async (req, res) => {
   try {
@@ -38,6 +36,10 @@ app.post("/gemini", async (req, res) => {
     console.error("Error in /gemini route:", error);
     res.status(500).send("Internal Server Error");
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // Start the server
