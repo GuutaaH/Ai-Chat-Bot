@@ -1,5 +1,5 @@
 import React from 'react';  // Import React once
-import { disableReactDevtools } from "@fvilers/disable-react-devtools"; // Named import
+
 
 import ReactDOM from 'react-dom/client';
 import './index.css';
