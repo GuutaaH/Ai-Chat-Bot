@@ -22,7 +22,8 @@
     "start": "node server.js",
     "start:frontend": "react-scripts start",
     "start:backend": "nodemon server.js",
-    "build": "react-scripts build",
+     "build": "cd Ai-Chat-bot && npm run build",
+     "install-all": "npm install && cd Ai-Chat-bot && npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
