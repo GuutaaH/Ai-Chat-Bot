@@ -19,6 +19,9 @@ app.use(express.json());
 
 // Initialize Google Generative AI with API key
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
 
 app.post("/gemini", async (req, res) => {
   try {
