@@ -21,9 +21,7 @@ app.use(express.json());
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+
 
 app.post("/gemini", async (req, res) => {
   try {
@@ -42,7 +40,9 @@ app.post("/gemini", async (req, res) => {
   }
 });
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // Start the server
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
